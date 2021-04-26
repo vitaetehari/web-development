@@ -1,12 +1,18 @@
-PROGRAM PrintHello(INPUT, OUTPUT);
-USES DOS;
-BEGIN {PrintHello}
-  WRITELN(‘Content-Type: text/html’);
+PROGRAM SarahRevere(INPUT, OUTPUT);
+USES
+  DOS;
+VAR
+  Query: STRING;
+BEGIN {SarahRevere}
   WRITELN;
-  WRITELN('<h1>PASCAL</h1>');
-  WRITELN('<p> REQUEST_METHOD: ', GetEnv('REQUEST_METHOD'), '</p>');
-  WRITELN('<p> QUERY_STRING: ', GetEnv('QUERY_STRING'), '</p>');
-  WRITELN('<p> CONTENT_LENGTH: ', GetEnv('CONTENT_LENGTH'), '</p>');
-  WRITELN('<p> HTTP_USER_AGENT: ', GetEnv('HTTP_USER_AGENT'), '</p>');
-  WRITELN('<p> HTTP_HOST: ', GetEnv('HTTP_HOST'), '</p>');
-END. {PrintHello}
+  Query := getEnv('QUERY_STRING');
+  IF Query = 'lanterns=1'
+  THEN
+    WRITELN('The British are coming by Sea.')
+  ELSE
+    IF Query = 'lanterns=2'
+    THEN
+      WRITELN('The British are coming by Land.')
+    ELSE
+      WRITELN('Sarah said nothing.')
+END. {SarahRevere}

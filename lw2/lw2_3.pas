@@ -13,9 +13,12 @@ BEGIN {Hello}
   THEN
     WRITELN('Hello Anonymous!')
   ELSE
-    IF FirstSeparatorPosition <> 0
-    THEN
-      WRITELN('Hello dear ', Copy(Query, 6, FirstSeparatorPosition - 6), '!')
-    ELSE
-      WRITELN('Hello dear ', Copy(Query, 6, Length(Query)), '!');
+    BEGIN
+      WRITE('Hello dear ');
+      IF FirstSeparatorPosition <> 0
+      THEN
+        WRITELN(Copy(Query, 6, FirstSeparatorPosition - 6), '!')
+      ELSE
+        WRITELN(Copy(Query, 6, Length(Query)), '!')
+    END
 END. {Hello}
